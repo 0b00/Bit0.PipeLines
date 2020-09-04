@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Bit0.PipeLines</RootNamespace>
+    <Description>Enabeles the possibility to execute the code as a pipeline.</Description>
+    <PackageTags>pipelines, action, runner</PackageTags>
+  </PropertyGroup>
+
+  <Import Project="..\..\Common.props" />
+</Project>

@@ -1,0 +1,36 @@
+<Project>  
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AnalysisLevel>5</AnalysisLevel>
+
+    <Authors>b1thunt3r</Authors>
+    <Copyright>Copyright © 2016-2020 Nullbit Solutions AB</Copyright>
+
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <DebugType>Full</DebugType>
+    
+    <Version>1.0</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <PackageVersion>$(Version)</PackageVersion>
+
+    <Product Condition="'$(Product)'==''">$(RootNamespace)</Product>
+    <AssemblyName>$(Product)</AssemblyName>
+    <PackageId>$(Product)</PackageId>
+    <AssemblyTitle>$(Product)</AssemblyTitle>
+    <ProductName>$(AssemblyTitle)</ProductName>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl Condition="'$(PackageProjectUrl)'==''">https://nullbit.se/project/Bit0.PipeLines</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/0b00/Bit0.PipeLines</RepositoryUrl>
+
+    <NoWarn>1701;1702;IDE0002;IDE0022</NoWarn>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <!--<Exec Command="$(SolutionDir)\nuget.cmd $(ProjectPath) Release &quot;P:\Nuget&quot;" />-->
+  </Target>
+
+</Project>
