@@ -2,12 +2,14 @@ name: Build and Release
 
 on:
   push:
-    branches: [ master ]
+    branches:
+    - master
     paths:
     - "src/**"
     - "tests/**"
   pull_request:
-    branches: [ master ]
+    branches:
+    - master
     paths:
     - "src/**"
     - "tests/**"
@@ -16,15 +18,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs: 
+      PACKAGE_VERSION: ${{ steps.setup.outputs.PACKAGE_VERSION }}
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Setup Variables
+      id: setup
       run: |
-        version=$(grep -oPm1 "(?<=<Version>)[^<]+" Common.props)
-        echo "::set-env name=PACKAGE_VERSION::$version.$GITHUB_RUN_NUMBER"
+        version=$(grep -oPm1 "(?<=<Version>)[^<]+" Solution.props).$GITHUB_RUN_NUMBER
+        echo "::set-env name=PACKAGE_VERSION::$version"
+        echo "::set-output name=PACKAGE_VERSION::$version"
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -57,16 +63,9 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup Variables
-      run: |
-        version=$(grep -oPm1 "(?<=<Version>)[^<]+" Common.props)
-        echo "::set-env name=PACKAGE_VERSION::$version.$GITHUB_RUN_NUMBER"
-    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -100,8 +99,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ env.PACKAGE_VERSION }}
-        release_name: Release v${{ env.PACKAGE_VERSION }}
+        tag_name: v${{ needs.build.outputs.PACKAGE_VERSION }}
+        release_name: Release v${{ needs.build.outputs.PACKAGE_VERSION }}
         body: |
           ${{ steps.changelog.outputs.changelog }}
         draft: false
