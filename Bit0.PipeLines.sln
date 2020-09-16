@@ -14,11 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Common.props = Common.props
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
+		Solution.props = Solution.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1A08A51A-BBDA-4E94-B04F-FE07706F5458}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeLineTests", "tests\PipeLineTests\PipeLineTests.csproj", "{16CEC062-AA58-4D16-A9D4-3318CE4AA0A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeLineTests", "tests\PipeLineTests\PipeLineTests.csproj", "{16CEC062-AA58-4D16-A9D4-3318CE4AA0A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{AB407D1F-E402-4C98-B4ED-7254CD70A916}"
 EndProject
