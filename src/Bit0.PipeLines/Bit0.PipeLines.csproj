@@ -6,5 +6,6 @@
     <PackageTags>pipelines, action, runner</PackageTags>
   </PropertyGroup>
 
+  <Import Project="..\..\Solution.props" />
   <Import Project="..\..\Common.props" />
 </Project>
