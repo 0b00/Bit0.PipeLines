@@ -13,16 +13,16 @@ namespace Bit0.PipeLines
             _context = context;
         }
 
-        public IActionPipeLine<TContext> AddProcess(Action<TContext> process)
+        public IActionPipeLine<TContext> AddAction(Action<TContext> process)
         {
-            return AddProcess(_actions.Count * 100, process);
+            return AddAction(_actions.Count * 100, process);
         }
 
-        public IActionPipeLine<TContext> AddProcess(Int32 index, Action<TContext> process)
+        public IActionPipeLine<TContext> AddAction(Int32 index, Action<TContext> process)
         {
             if (_actions.ContainsKey(index))
             {
-                return AddProcess(index + 1, process);
+                return AddAction(index + 1, process);
             }
             _actions.Add(index, process);
 

@@ -27,10 +27,10 @@ namespace PipeLineTests
             };
 
             new ActionPipeLine<AContext>(new AContext(10))
-                .AddProcess(1000, dict["multiply"])
-                .AddProcess(dict["add"])
-                .AddProcess(0, dict["divide"])
-                .AddProcess(0, dict["subtract"])
+                .AddAction(1000, dict["multiply"])
+                .AddAction(dict["add"])
+                .AddAction(0, dict["divide"])
+                .AddAction(0, dict["subtract"])
                 .Execute();
 
             result.Count.Should().Be(4);
