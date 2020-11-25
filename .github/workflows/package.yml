@@ -29,13 +29,13 @@ jobs:
       id: setup
       run: |
         version=$(grep -oPm1 "(?<=<Version>)[^<]+" Solution.props).$GITHUB_RUN_NUMBER
-        echo "::set-env name=PACKAGE_VERSION::$version"
+        echo "PACKAGE_VERSION=$version" >> $GITHUB_ENV
         echo "::set-output name=PACKAGE_VERSION::$version"
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.401
+        dotnet-version: 5.0.100
 
     - name: Install dependencies
       run: dotnet restore
@@ -47,7 +47,7 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
 
     - name: Package
-      run: dotnet pack --no-restore -c Release -p:Version=$PACKAGE_VERSION
+      run: dotnet pack --no-restore -c Release -p:Version=${{ steps.setup.outputs.PACKAGE_VERSION }}
 
     - name: Collect Packages
       run: |
@@ -69,7 +69,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.401
+        dotnet-version: 5.0.100
 
     - name: Download Artifact
       uses: actions/download-artifact@v1

@@ -1,6 +1,6 @@
 <Project>  
   <PropertyGroup>
-    <Version>2.0</Version>
+    <Version>3.0</Version>
     <PackageProjectUrl Condition="'$(PackageProjectUrl)'==''">https://github.com/0b00/Bit0.PipeLines</PackageProjectUrl>
     <RepositoryUrl>https://github.com/0b00/Bit0.PipeLines</RepositoryUrl>
   </PropertyGroup>
