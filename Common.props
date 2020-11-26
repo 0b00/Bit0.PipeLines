@@ -27,4 +27,8 @@
     <NoWarn>1701;1702;IDE0002;IDE0022;CC0057;IDE0063;IDE0046;IDE0066</NoWarn>
   </PropertyGroup>
 
+  <ProjectExtensions>
+    <DotNetVersion>5.0.100</DotNetVersion>
+  </ProjectExtensions>
+
 </Project>
