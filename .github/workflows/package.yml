@@ -74,7 +74,7 @@ jobs:
         dotnet-version: ${{ needs.build.outputs.DOTNET_VERSION }}
 
     - name: Download Artifact
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4.1.7
       with:
         name: nupkg
 
